@@ -45,6 +45,14 @@
     display:flex; align-items:center; justify-content:space-between;
     padding:22px 32px; border-bottom:1px solid var(--line);
     background:linear-gradient(180deg, rgba(31,28,21,0.9), rgba(31,28,21,0.4));
+    gap:16px; flex-wrap:wrap;
+  }
+  @media (max-width:640px){
+    .rail-header{padding:18px 18px 20px;}
+    .brand{width:100%; justify-content:space-between;}
+    .brand h1{font-size:20px;}
+    .header-status{width:100%; justify-content:flex-end;}
+    .admin-quick-link{top:10px; right:10px; padding:5px 8px; font-size:9px;}
   }
   .brand{display:flex; align-items:baseline; gap:10px;}
   .brand .mark{
@@ -70,15 +78,30 @@
 
   /* ---------- Layout ---------- */
   #app{max-width:1180px; margin:0 auto; padding:0 24px 80px;}
+  @media (max-width:640px){#app{padding:0 16px 60px;}}
   .screen{animation:fadeIn .35s ease;}
   @keyframes fadeIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
 
   /* ---------- Home / role choice ---------- */
-  .home-hero{padding:70px 0 40px; text-align:center;}
+  .home-hero{padding:70px 0 24px; text-align:center;}
   .home-hero .eyebrow{font-family:var(--font-mono); color:var(--amber); letter-spacing:3px; font-size:12px; text-transform:uppercase;}
   .home-hero h2{font-size:clamp(32px,5vw,54px); margin-top:14px; line-height:1.08;}
   .home-hero .sub{color:var(--cream-dim); margin-top:16px; max-width:590px; margin-left:auto; margin-right:auto; font-size:15px; line-height:1.75;}
-  .role-grid{display:grid; grid-template-columns:1fr; gap:22px; margin-top:48px; max-width:760px; margin-left:auto; margin-right:auto;}
+  .hero-banner{
+    margin:12px auto 0; max-width:880px; padding:26px 28px; border-radius:18px;
+    background:linear-gradient(135deg, rgba(216,155,60,0.16), rgba(184,64,47,0.12));
+    border:1px solid rgba(216,155,60,0.22); display:grid; gap:12px;
+  }
+  .hero-banner .mini{font-family:var(--font-mono); text-transform:uppercase; letter-spacing:2px; color:var(--amber); font-size:11px;}
+  .hero-banner .big{font-family:var(--font-display); font-size:clamp(20px,3vw,28px); color:var(--cream);}
+  .hero-banner .small{color:var(--cream-dim); font-size:14px; line-height:1.6;}
+  .featured-strip{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px;}
+  @media (max-width:760px){.featured-strip{grid-template-columns:1fr;}}
+  .feature-pill{padding:14px 16px; border-radius:12px; background:rgba(255,255,255,0.03); border:1px solid var(--line);}
+  .feature-pill strong{display:block; font-size:15px; color:var(--cream); margin-bottom:4px;}
+  .feature-pill span{font-size:13px; color:var(--cream-dim);}
+  .role-grid{display:grid; grid-template-columns:1fr; gap:22px; margin-top:28px; max-width:760px; margin-left:auto; margin-right:auto;}
+  @media (max-width:640px){.home-hero{padding:48px 0 28px;} .home-hero h2{font-size:clamp(28px,7vw,38px);} .role-card{padding:24px 20px;}}
   .role-card{
     background:linear-gradient(135deg, rgba(36,31,23,0.98), rgba(28,24,18,0.98));
     border:1px solid var(--line); border-radius:14px;
@@ -87,6 +110,7 @@
   }
   .role-card::before{content:""; position:absolute; inset:auto -20px -20px auto; width:140px; height:140px; background:radial-gradient(circle, rgba(216,155,60,0.16), transparent 70%);}
   .role-card:hover{border-color:var(--amber); transform:translateY(-3px); box-shadow:0 20px 40px rgba(0,0,0,0.3);}
+  .role-card:active{transform:translateY(0) scale(0.99);}
   .role-card .num{font-family:var(--font-mono); color:var(--amber-dark); font-size:12px;}
   .role-card h3{font-size:24px; margin-top:10px;}
   .role-card p{color:var(--cream-dim); font-size:13.5px; margin-top:8px; line-height:1.5;}
@@ -107,7 +131,7 @@
   .ticket-row.total{border-top:1px dashed #9c9276; margin-top:8px; padding-top:10px; font-weight:600; font-size:15px; color:#1c1a14;}
 
   /* ---------- Panels / forms ---------- */
-  .panel{background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:28px;}
+  .panel{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:28px; box-shadow:0 10px 24px rgba(0,0,0,0.16);}
   .panel + .panel{margin-top:18px;}
   .panel-title{font-size:20px; margin-bottom:4px;}
   .panel-sub{color:var(--cream-dim); font-size:13px; margin-bottom:20px;}
@@ -144,9 +168,12 @@
   /* ---------- Menu grid ---------- */
   .menu-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px;}
   .food-card{
-    background:var(--bg-alt); border:1px solid var(--line); border-radius:6px; padding:16px;
+    background:linear-gradient(180deg, rgba(31,28,21,0.98), rgba(24,20,15,0.98));
+    border:1px solid var(--line); border-radius:10px; padding:16px;
     display:flex; flex-direction:column; gap:10px;
+    transition:transform .2s ease, border-color .2s ease;
   }
+  .food-card:hover{transform:translateY(-2px); border-color:var(--amber);}
   .food-card h4{font-size:16px;}
   .food-card .price{font-family:var(--font-mono); color:var(--amber); font-size:15px;}
   .qty-row{display:flex; align-items:center; gap:8px;}
@@ -157,6 +184,7 @@
   /* ---------- Cart drawer ---------- */
   .order-layout{display:grid; grid-template-columns:1.6fr 1fr; gap:22px; align-items:start;}
   @media(max-width:860px){.order-layout{grid-template-columns:1fr;}}
+  @media(max-width:640px){.cart-box{position:static;} .food-card{padding:14px;} .menu-grid{grid-template-columns:1fr;}}
   .cart-box{position:sticky; top:20px;}
   .cart-item{display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid var(--line); font-size:13.5px;}
   .cart-item .meta{color:var(--cream-dim); font-family:var(--font-mono); font-size:12px;}
@@ -181,7 +209,7 @@
   /* ---------- Admin layout ---------- */
   .admin-layout{display:grid; grid-template-columns:190px 1fr; gap:22px; align-items:start;}
   @media(max-width:760px){.admin-layout{grid-template-columns:1fr;}}
-  .admin-nav{position:sticky; top:20px; background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:10px; display:flex; flex-direction:column; gap:2px;}
+  .admin-nav{position:sticky; top:20px; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:10px; display:flex; flex-direction:column; gap:2px; box-shadow:0 10px 24px rgba(0,0,0,0.16);}
   .admin-nav button{
     text-align:left; background:transparent; border:none; color:var(--cream-dim); padding:11px 12px;
     border-radius:4px; font-size:13.5px; font-weight:500; position:relative;
@@ -215,6 +243,7 @@
     max-width:1180px; margin:0 auto; padding:24px 24px 44px; display:flex; justify-content:space-between;
     align-items:center; gap:16px; flex-wrap:wrap; color:var(--cream-dim); font-size:13px; border-top:1px solid var(--line);
   }
+  @media (max-width:640px){.site-footer{padding:20px 16px 36px; flex-direction:column; align-items:flex-start;}}
   .site-footer strong{color:var(--cream); font-family:var(--font-display); font-size:16px;}
 </style>
 </head>
@@ -325,6 +354,16 @@ function renderHome(){
       <div class="eyebrow">Authentic flavors • refined service</div>
       <h2>Elevated dining starts<br>with one seamless order.</h2>
       <p class="sub">Welcome to Spice &amp; Bites — a polished dining experience where every order is handled with care, every ticket stays connected, and every guest feels at home.</p>
+    </div>
+    <div class="hero-banner">
+      <div class="mini">Signature experience</div>
+      <div class="big">Fresh ingredients, fast service, and a premium dining flow.</div>
+      <div class="small">From cozy dinners to busy weekends, Spice &amp; Bites gives your guests an elegant and effortless ordering journey.</div>
+    </div>
+    <div class="featured-strip">
+      <div class="feature-pill"><strong>Fast Ordering</strong><span>Simple guest and member flow</span></div>
+      <div class="feature-pill"><strong>Live Tracking</strong><span>Orders, status, and history in one place</span></div>
+      <div class="feature-pill"><strong>Admin Control</strong><span>Manage menu, tickets, and customers discreetly</span></div>
     </div>
     <div class="role-grid">
       <div class="role-card" data-go="customer-auth">
@@ -562,6 +601,7 @@ function showTicket(order, isGuest){
         <div><h3>Order #${order.order_number}</h3><div style="font-family:var(--font-mono);font-size:11px;color:#6b6650;">${order.customer}</div></div>
         <div class="tag">${order.payment_method}</div>
       </div>
+      <div style="margin-bottom:10px; font-family:var(--font-mono); font-size:12px; color:#6b6650;">Guest Order Ref: #${order.order_number}</div>
       ${order.items.map(i=>`<div class="ticket-row"><span>${i.food} × ${i.quantity}</span><span>${money(i.price*i.quantity)}</span></div>`).join('')}
       <div class="ticket-row"><span>Subtotal</span><span>${money(order.subtotal)}</span></div>
       <div class="ticket-row"><span>Discount (${order.discount}%)</span><span>-${money(order.discount_amount)}</span></div>
