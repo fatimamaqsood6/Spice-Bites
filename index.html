@@ -91,10 +91,12 @@
     margin:12px auto 0; max-width:880px; padding:26px 28px; border-radius:18px;
     background:linear-gradient(135deg, rgba(216,155,60,0.16), rgba(184,64,47,0.12));
     border:1px solid rgba(216,155,60,0.22); display:grid; gap:12px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
   }
   .hero-banner .mini{font-family:var(--font-mono); text-transform:uppercase; letter-spacing:2px; color:var(--amber); font-size:11px;}
   .hero-banner .big{font-family:var(--font-display); font-size:clamp(20px,3vw,28px); color:var(--cream);}
   .hero-banner .small{color:var(--cream-dim); font-size:14px; line-height:1.6;}
+  .hero-banner .cta-chip{display:inline-flex; align-items:center; gap:8px; width:max-content; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,0.06); color:var(--cream); font-size:12px; font-family:var(--font-mono); border:1px solid rgba(255,255,255,0.08);}  .hero-banner .cta-chip strong{color:var(--amber);}  .hero-banner .cta-chip:hover{background:rgba(216,155,60,0.14); border-color:var(--amber);}
   .featured-strip{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px;}
   @media (max-width:760px){.featured-strip{grid-template-columns:1fr;}}
   .feature-pill{padding:14px 16px; border-radius:12px; background:rgba(255,255,255,0.03); border:1px solid var(--line);}
@@ -104,11 +106,12 @@
   @media (max-width:640px){.home-hero{padding:48px 0 28px;} .home-hero h2{font-size:clamp(28px,7vw,38px);} .role-card{padding:24px 20px;}}
   .role-card{
     background:linear-gradient(135deg, rgba(36,31,23,0.98), rgba(28,24,18,0.98));
-    border:1px solid var(--line); border-radius:14px;
+    border:2px solid var(--line); border-radius:14px;
     padding:32px 28px; text-align:left; cursor:pointer; transition:.25s; position:relative; overflow:hidden;
     box-shadow:0 18px 35px rgba(0,0,0,0.25);
   }
-  .role-card::before{content:""; position:absolute; inset:auto -20px -20px auto; width:140px; height:140px; background:radial-gradient(circle, rgba(216,155,60,0.16), transparent 70%);}
+  .role-card .accent-line{position:absolute; left:0; top:0; bottom:0; width:4px; background:linear-gradient(180deg, var(--amber), var(--red));}
+  .role-card::before{content:""; position:absolute; inset:auto -20px -20px auto; width:140px; height:140px; background:radial-gradient(circle, rgba(216,155,60,0.16), transparent 70%);}  .role-card .cta-button{display:inline-flex; align-items:center; justify-content:center; margin-top:14px; padding:10px 14px; width:max-content; border-radius:999px; background:linear-gradient(90deg, var(--amber), var(--red)); color:#1c1a14; font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; box-shadow:0 8px 20px rgba(216,155,60,0.18);}  .role-card .cta-button:hover{transform:translateY(-1px);}
   .role-card:hover{border-color:var(--amber); transform:translateY(-3px); box-shadow:0 20px 40px rgba(0,0,0,0.3);}
   .role-card:active{transform:translateY(0) scale(0.99);}
   .role-card .num{font-family:var(--font-mono); color:var(--amber-dark); font-size:12px;}
@@ -359,6 +362,7 @@ function renderHome(){
       <div class="mini">Signature experience</div>
       <div class="big">Fresh ingredients, fast service, and a premium dining flow.</div>
       <div class="small">From cozy dinners to busy weekends, Spice &amp; Bites gives your guests an elegant and effortless ordering journey.</div>
+      <div class="cta-chip"><strong>▶</strong> Start your order below</div>
     </div>
     <div class="featured-strip">
       <div class="feature-pill"><strong>Fast Ordering</strong><span>Simple guest and member flow</span></div>
@@ -367,10 +371,11 @@ function renderHome(){
     </div>
     <div class="role-grid">
       <div class="role-card" data-go="customer-auth">
-        <div class="num">01 / DINING EXPERIENCE</div>
+        <div class="accent-line"></div>
+        <div class="num">01 / CUSTOMER SECTION</div>
         <h3>Start your order</h3>
         <p>Browse the menu, build your order, and enjoy a clean, modern ordering experience as a guest or a registered member.</p>
-        <div class="go">Enter dining room →</div>
+        <div class="cta-button">Order Now</div>
       </div>
     </div>
   </div>`);
