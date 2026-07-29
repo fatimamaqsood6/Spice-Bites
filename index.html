@@ -336,8 +336,14 @@ async function saveState(){
 }
 
 function nextOrderNumber(){
-  if(S.orders.length===0) return 1001;
-  return S.orders[S.orders.length-1].orderNumber + 1;
+  const lastOrder = S.orders[S.orders.length - 1];
+  if(!lastOrder) return 1001;
+
+  const lastNumber = typeof lastOrder.order_number === 'number'
+    ? lastOrder.order_number
+    : (typeof lastOrder.orderNumber === 'number' ? lastOrder.orderNumber : 1000);
+
+  return lastNumber + 1;
 }
 function money(n){ return "Rs " + Math.round(n*100)/100; }
 
